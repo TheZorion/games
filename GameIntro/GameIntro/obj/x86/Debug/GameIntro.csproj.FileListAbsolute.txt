@@ -1,0 +1,20 @@
+c:\users\lasse\documents\visual studio 2010\Projects\GameIntro\GameIntro\bin\Debug\GameIntro.exe
+c:\users\lasse\documents\visual studio 2010\Projects\GameIntro\GameIntro\bin\Debug\GameIntro.pdb
+c:\users\lasse\documents\visual studio 2010\Projects\GameIntro\GameIntro\obj\x86\Debug\ResolveAssemblyReference.cache
+c:\users\lasse\documents\visual studio 2010\Projects\GameIntro\GameIntro\obj\x86\Debug\GameIntro.Properties.Resources.resources
+c:\users\lasse\documents\visual studio 2010\Projects\GameIntro\GameIntro\obj\x86\Debug\GenerateResource.read.1.tlog
+c:\users\lasse\documents\visual studio 2010\Projects\GameIntro\GameIntro\obj\x86\Debug\GenerateResource.write.1.tlog
+c:\users\lasse\documents\visual studio 2010\Projects\GameIntro\GameIntro\obj\x86\Debug\GameIntro.exe
+c:\users\lasse\documents\visual studio 2010\Projects\GameIntro\GameIntro\obj\x86\Debug\GameIntro.pdb
+C:\Users\Lasse\Documents\Visual Studio 2010\Projects\GameIntro\GameIntro\obj\x86\Debug\GameIntro.Views.EquiptmentView.resources
+C:\Users\Lasse\Dropbox\Programmering\GameIntro\GameIntro\obj\x86\Debug\GameIntro.exe
+C:\Users\Lasse\Dropbox\Programmering\GameIntro\GameIntro\obj\x86\Debug\GameIntro.pdb
+C:\Users\Lasse\Dropbox\Programmering\GameIntro\GameIntro\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Lasse\Dropbox\Programmering\GameIntro\GameIntro\obj\x86\Debug\GameIntro.Views.EquiptmentView.resources
+C:\Users\Lasse\Dropbox\Programmering\GameIntro\GameIntro\obj\x86\Debug\GameIntro.Properties.Resources.resources
+C:\Users\Lasse\Dropbox\Programmering\GameIntro\GameIntro\obj\x86\Debug\GameIntro.Views.LogInView.resources
+C:\Users\Lasse\Dropbox\Programmering\GameIntro\GameIntro\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\Lasse\Dropbox\Programmering\GameIntro\GameIntro\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\Lasse\Dropbox\Programmering\GameIntro\GameIntro\bin\Debug\GameIntro.exe
+C:\Users\Lasse\Dropbox\Programmering\GameIntro\GameIntro\bin\Debug\GameIntro.pdb
+C:\Users\Lasse\Dropbox\Programmering\GameIntro\GameIntro\obj\x86\Debug\GameIntro.Views.GameView.resources
