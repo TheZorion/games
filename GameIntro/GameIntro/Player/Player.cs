@@ -47,5 +47,9 @@ namespace GameIntro.Player
                 equiptment.Add(item);
             return equiptment.Count;
         }
+        public List<Items> getItems()
+        {
+            return equiptment;
+        }
     }
 }

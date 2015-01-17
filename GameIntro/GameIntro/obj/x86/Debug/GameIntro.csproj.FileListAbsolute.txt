@@ -18,3 +18,13 @@ C:\Users\Lasse\Dropbox\Programmering\GameIntro\GameIntro\obj\x86\Debug\GenerateR
 C:\Users\Lasse\Dropbox\Programmering\GameIntro\GameIntro\bin\Debug\GameIntro.exe
 C:\Users\Lasse\Dropbox\Programmering\GameIntro\GameIntro\bin\Debug\GameIntro.pdb
 C:\Users\Lasse\Dropbox\Programmering\GameIntro\GameIntro\obj\x86\Debug\GameIntro.Views.GameView.resources
+C:\Users\Zorion\Documents\GitHub\games\GameIntro\GameIntro\obj\x86\Debug\GameIntro.exe
+C:\Users\Zorion\Documents\GitHub\games\GameIntro\GameIntro\obj\x86\Debug\GameIntro.pdb
+C:\Users\Zorion\Documents\GitHub\games\GameIntro\GameIntro\bin\Debug\GameIntro.exe
+C:\Users\Zorion\Documents\GitHub\games\GameIntro\GameIntro\bin\Debug\GameIntro.pdb
+C:\Users\Zorion\Documents\GitHub\games\GameIntro\GameIntro\obj\x86\Debug\GameIntro.csprojResolveAssemblyReference.cache
+C:\Users\Zorion\Documents\GitHub\games\GameIntro\GameIntro\obj\x86\Debug\GameIntro.Views.EquiptmentView.resources
+C:\Users\Zorion\Documents\GitHub\games\GameIntro\GameIntro\obj\x86\Debug\GameIntro.Properties.Resources.resources
+C:\Users\Zorion\Documents\GitHub\games\GameIntro\GameIntro\obj\x86\Debug\GameIntro.Views.GameView.resources
+C:\Users\Zorion\Documents\GitHub\games\GameIntro\GameIntro\obj\x86\Debug\GameIntro.Views.LogInView.resources
+C:\Users\Zorion\Documents\GitHub\games\GameIntro\GameIntro\obj\x86\Debug\GameIntro.csproj.GenerateResource.Cache
