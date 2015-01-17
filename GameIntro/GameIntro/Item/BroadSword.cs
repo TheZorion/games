@@ -5,7 +5,7 @@ using System.Text;
 
 namespace GameIntro.Item
 {
-    class BroadSword : Weapons
+    class BroadSword : Items
     {
         Type _type = Type.TwoHanded;
         int _damage;

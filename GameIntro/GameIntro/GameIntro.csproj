@@ -58,7 +58,6 @@
     <Compile Include="Player\Creature.cs" />
     <Compile Include="Player\Player.cs" />
     <Compile Include="Player\Race.cs" />
-    <Compile Include="Item\Weapons.cs" />
     <Compile Include="Item\Items.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

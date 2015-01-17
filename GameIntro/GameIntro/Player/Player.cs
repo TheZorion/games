@@ -10,8 +10,18 @@ namespace GameIntro.Player
     {
         
         List<Items> equiptment = new List<Items>();
-        public Player(String name, TypesOfRaces.Race race, int health) : base (name, race, health)
-        {
+        Items firstHand;
+        Items shield;
+        Items belt;
+        Items armor;
+        Items pants;
+        Items boots;
+        Items helmet;
+        Items ring;
+        Items amulet;
+        Items gloves;
+        public Player(String name, TypesOfRaces.Race race, int health) 
+            : base (name, race, health){
         }
 
         override public int getDefense()
@@ -34,16 +44,27 @@ namespace GameIntro.Player
         }
         public int EquiptItem(Items item)
         {
-            bool found = false;
             foreach (Items i in equiptment)
                 if (i.TheType() == item.TheType())
-                {
                     equiptment.Remove(i);
-                    equiptment.Add(item);
-                    found = true;
-                    break;
-                }
-            if (!found)
+            switch (item.TheType())
+            {
+                case Item.Type.Gloves: gloves = item; break;
+                case Item.Type.Pants: pants = item; break;
+                case Item.Type.Armor: armor = item; break;
+                case Item.Type.Helmet: helmet = item;break;
+                case Item.Type.OneHanded: firstHand = item;break;
+                case Item.Type.Shield: shield = item; break;
+                case Item.Type.Shoes: boots = item;break;
+                case Item.Type.TwoHanded: firstHand = item;
+                    if(shield != null){
+                        foreach (Items eq in equiptment)
+                            if(eq.TheType() == Item.Type.Shield)
+                                equiptment.Remove(eq);
+                        shield = null;
+                    }
+                    break;                
+            }
                 equiptment.Add(item);
             return equiptment.Count;
         }

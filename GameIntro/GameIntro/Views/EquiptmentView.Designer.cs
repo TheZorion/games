@@ -38,6 +38,7 @@
             this.pictureBox11 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.Inventory = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FirstHandPic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -140,11 +141,20 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // Inventory
+            // 
+            this.Inventory.FormattingEnabled = true;
+            this.Inventory.Location = new System.Drawing.Point(517, 100);
+            this.Inventory.Name = "Inventory";
+            this.Inventory.Size = new System.Drawing.Size(185, 173);
+            this.Inventory.TabIndex = 13;
+            // 
             // EquiptmentView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(408, 560);
+            this.ClientSize = new System.Drawing.Size(819, 564);
+            this.Controls.Add(this.Inventory);
             this.Controls.Add(this.FirstHandPic);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.pictureBox5);
@@ -182,6 +192,7 @@
         private System.Windows.Forms.PictureBox pictureBox11;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ListBox Inventory;
     }
 }
 
