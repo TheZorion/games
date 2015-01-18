@@ -11,5 +11,10 @@ namespace GameIntro.Item
         int GetAttack();
         Type TheType();
         String GetPic();
+        String Name();
+        int MagicDamage();
+        int Damage();
+
+        int Special();
     }
 }

@@ -11,14 +11,17 @@ namespace GameIntro.Views
 {
     public partial class GameView : Form
     {
+        
         Form _login;
         Form _equiptment;
         Player.Player _p1;
+        Controller.Controller _controller;
         public GameView(Form login, Player.Player p1)
         {
             InitializeComponent();
             _login = login;
             _p1 = p1;
+            _controller = Controller.Controller.getController(_p1);
             _equiptment = new EquiptmentView(_p1);
         }
 

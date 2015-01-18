@@ -36,7 +36,7 @@ namespace GameIntro.Views
                 foreach(TypesOfRaces.Race race in Player.TypesOfRaces.GetRaces())
                     if (race.ToString().Equals(ClassList.SelectedItem.ToString()))
                     {
-                        Player.Player p1 = new Player.Player(NameTextBox.Text, race, 200);
+                        Player.Player p1 = Player.Player.GetPlayer(NameTextBox.Text, race, 200);
                         GameView g = new GameView(this, p1);
                         this.Hide();
                         g.Show();

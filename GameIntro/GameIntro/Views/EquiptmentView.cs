@@ -13,51 +13,64 @@ namespace GameIntro.Views
 {
     public partial class EquiptmentView : Form
     {
-        Items broadSword;
         Player.Player _p1;
         ToolTip toolTip1;
+        Controller.Controller _controller;
         public EquiptmentView(Player.Player p1)
         {
             _p1 = p1;
+            _controller = Controller.Controller.getController(_p1);
             InitializeComponent();
             InitializeToolTip();
-            button1.KeyPress += new KeyPressEventHandler(button1_KeyPress);
+            InitializeInventory();
             FirstHandPic.MouseHover += new System.EventHandler(FirstHandPic_MouseHover);
-            Inventory.MouseDoubleClick += Inventory_MouseDoubleClick;
-            Inventory.MouseHover += Inventory_MouseHover;
+            //Inventory.MouseDoubleClick += Inventory_MouseDoubleClick;
+            //Inventory.MouseHover += Inventory_MouseHover;
+        }
+
+        private void InitializeInventory()
+        {
+            //*2 is random number but it works
+            panel1.Controls.Clear();
+            panel1.Width = InventoryItem.width()*2;
+            List<Items> items = _controller.getInventory();
+            for (int i = 0; i < items.Count; i++)
+            {
+                InventoryItem II = new InventoryItem(items[i]);
+                II.Location = new Point(II.Location.X, i*II.Height);
+                panel1.Controls.Add(II);
+                II.SelectItem += II_SelectItem;
+
+            }
+        }
+
+        void II_SelectItem(object sender, EquiptItemArgs e)
+        {
+            _controller.EquiptItem(e.InventoryItem.item);
+            panel1.Controls.Remove(e.InventoryItem);
+            InitializeInventory();
+            FirstHandPic.BackgroundImage = Image.FromFile(e.InventoryItem.item.GetPic());
+            FirstHandPic.BackgroundImageLayout = ImageLayout.Stretch;
+
         }
         void Inventory_MouseHover(object sender, EventArgs e)
         {
-            Point point = Inventory.PointToClient(Cursor.Position);
-            int index = Inventory.IndexFromPoint(point);
-            if (index < 0) return;
-            Items item = (Items)Inventory.Items[index];
-            toolTip1.SetToolTip(Inventory, item.ToString());
+            //Point point = Inventory.PointToClient(Cursor.Position);
+            //int index = Inventory.IndexFromPoint(point);
+            //if (index < 0) return;
+            //Items item = ((InventoryItem)Inventory.Items[index]).item;
+            //toolTip1.SetToolTip(Inventory, item.ToString());
         }
         private void InitializeToolTip()
         {
             // Create the ToolTip and associate with the Form container.
             toolTip1 = new ToolTip();
             // Set up the delays for the ToolTip.
-            toolTip1.AutoPopDelay = 5000;
+            toolTip1.AutoPopDelay = 50000;
             toolTip1.InitialDelay = 100;
             toolTip1.ReshowDelay = 500;
             // Force the ToolTip text to be displayed whether or not the form is active.
             toolTip1.ShowAlways = true;
-        }
-
-        
-
-        void Inventory_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            Items item = (Items)Inventory.SelectedItem;
-            if (Inventory.SelectedItem != null) {
-                Inventory.Items.Remove(item);
-                _p1.EquiptItem(item);
-                FirstHandPic.BackgroundImage = Image.FromFile(item.GetPic());
-                FirstHandPic.BackgroundImageLayout = ImageLayout.Stretch;
-            }
-            
         }
         
         void FirstHandPic_MouseHover(object sender, EventArgs e)
@@ -65,7 +78,8 @@ namespace GameIntro.Views
             List<Items> test = _p1.getItems();
             Items i1 = test[0];
             i1.ToString();
-            toolTip1.SetToolTip(this.FirstHandPic, i1.ToString());
+            if(_p1.firstHand != null)
+                toolTip1.SetToolTip(this.FirstHandPic, _p1.firstHand.ToString());
 
         }
 
@@ -75,12 +89,6 @@ namespace GameIntro.Views
                 this.Hide();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            broadSword = new BroadSword("Excellent broad sword");
-            Inventory.Items.Add(broadSword);
-           
-        }
         
         protected override void OnKeyPress(KeyPressEventArgs e)
         {
@@ -90,6 +98,5 @@ namespace GameIntro.Views
                 this.Hide();
             }
         }
-
     }
 }

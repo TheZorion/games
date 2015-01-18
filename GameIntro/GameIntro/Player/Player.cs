@@ -8,20 +8,40 @@ namespace GameIntro.Player
 {
     public class Player : Creature
     {
-        
+        private static Player _player;
+        List<Items> Inventory = new List<Items>();
         List<Items> equiptment = new List<Items>();
-        Items firstHand;
-        Items shield;
-        Items belt;
-        Items armor;
-        Items pants;
-        Items boots;
-        Items helmet;
-        Items ring;
-        Items amulet;
-        Items gloves;
-        public Player(String name, TypesOfRaces.Race race, int health) 
+        public Items firstHand{get;set;}
+        public Items shield { get; set; }
+        public Items belt { get; set; }
+        public Items armor { get; set; }
+        public Items pants { get; set; }
+        public Items boots { get; set; }
+        public Items helmet { get; set; }
+        public Items ring { get; set; }
+        public Items amulet { get; set; }
+        public Items gloves { get; set; }
+        private Player(String name, TypesOfRaces.Race race, int health) 
             : base (name, race, health){
+                Inventory.Add(new BroadSword("Bad sword"));    
+            Inventory.Add(new BroadSword("Excellent broadsword"));
+            Inventory.Add(new BroadSword("Bad sword"));
+            Inventory.Add(new BroadSword("Excellent broadsword"));
+            Inventory.Add(new BroadSword("Bad sword"));    
+            Inventory.Add(new BroadSword("Excellent broadsword"));
+            Inventory.Add(new BroadSword("Excellent broadsword"));
+            Inventory.Add(new BroadSword("Bad sword"));
+            Inventory.Add(new BroadSword("Excellent broadsword"));
+            Inventory.Add(new BroadSword("Excellent broadsword"));
+            Inventory.Add(new BroadSword("Bad sword"));
+            Inventory.Add(new BroadSword("Excellent broadsword"));
+                
+        }
+        public static Player GetPlayer(String name, TypesOfRaces.Race race, int health)
+        {
+            if (_player == null)
+                _player = new Player(name, race, health);
+            return _player;
         }
 
         override public int getDefense()
@@ -46,7 +66,10 @@ namespace GameIntro.Player
         {
             foreach (Items i in equiptment)
                 if (i.TheType() == item.TheType())
+                {
                     equiptment.Remove(i);
+                    Inventory.Add(i); break;
+                }
             switch (item.TheType())
             {
                 case Item.Type.Gloves: gloves = item; break;
@@ -65,12 +88,18 @@ namespace GameIntro.Player
                     }
                     break;                
             }
-                equiptment.Add(item);
+            Inventory.Remove(item);
+            equiptment.Add(item);
             return equiptment.Count;
         }
         public List<Items> getItems()
         {
             return equiptment;
+        }
+
+        internal List<Items> GetInventory()
+        {
+            return Inventory;
         }
     }
 }

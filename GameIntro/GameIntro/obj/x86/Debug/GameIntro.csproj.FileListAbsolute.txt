@@ -28,3 +28,4 @@ C:\Users\Zorion\Documents\GitHub\games\GameIntro\GameIntro\obj\x86\Debug\GameInt
 C:\Users\Zorion\Documents\GitHub\games\GameIntro\GameIntro\obj\x86\Debug\GameIntro.Views.GameView.resources
 C:\Users\Zorion\Documents\GitHub\games\GameIntro\GameIntro\obj\x86\Debug\GameIntro.Views.LogInView.resources
 C:\Users\Zorion\Documents\GitHub\games\GameIntro\GameIntro\obj\x86\Debug\GameIntro.csproj.GenerateResource.Cache
+C:\Users\Zorion\Documents\GitHub\games\GameIntro\GameIntro\obj\x86\Debug\GameIntro.Views.InventoryItem.resources

@@ -17,35 +17,17 @@ namespace GameIntro.Item
 
         public BroadSword(String name)
         {
-            Damage = r.Next(10);
+            _damage = r.Next(10);
             Durability = r.Next(30) + 20;
-            MagicDamage = r.Next(10);
+            _magicDamage = r.Next(10);
             _name = name;
 
         }     
-        String Name
-        {
-            get { return _name; }
-        }
-        int Damage
-        {
-            get{return _damage;}
-            set{_damage = value;}  
-        }
-        int MagicDamage
-        {
-            get { return _magicDamage; }
-            set { _magicDamage = value; } 
-        }
+
         int Durability
         {
             get{return _durability;}
             set{_durability= value;}  
-        }
-        int Special
-        {
-            get { return _special; }
-            set { _special = value; }
         }
         public String GetPic(){
         
@@ -53,11 +35,11 @@ namespace GameIntro.Item
         }
         override public String ToString()
         {
-            return Name + "\nDurability: "+Durability+"\nDamage: " + Damage + "\nMagic Damage: " + MagicDamage;
+            return _name + "\nDurability: "+Durability+"\nDamage: " + _damage + "\nMagic Damage: " + _magicDamage;
         }
         public int GetAttack()
         {
-            return Damage + MagicDamage;
+            return _damage + _magicDamage;
         }
         public int GetDefense()
         {
@@ -66,6 +48,22 @@ namespace GameIntro.Item
         public Type TheType()
         {
             return _type;
+        }
+        public int Damage()
+        {
+            return _damage;
+        }
+        public int Special()
+        {
+            return _special;
+        }
+        public int MagicDamage()
+        {
+            return _magicDamage;
+        }
+        public String Name()
+        {
+            return _name;
         }
     }
 }

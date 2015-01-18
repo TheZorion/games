@@ -34,6 +34,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -44,8 +46,10 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\Controller.cs" />
     <Compile Include="Item\BroadSword.cs" />
     <Compile Include="Player\Orc.cs" />
     <Compile Include="Views\EquiptmentView.cs">
@@ -67,6 +71,12 @@
     <Compile Include="Views\GameView.Designer.cs">
       <DependentUpon>GameView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\InventoryItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\InventoryItem.Designer.cs">
+      <DependentUpon>InventoryItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\LogInView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +97,9 @@
     </Compile>
     <EmbeddedResource Include="Views\GameView.resx">
       <DependentUpon>GameView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\InventoryItem.resx">
+      <DependentUpon>InventoryItem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\LogInView.resx">
       <DependentUpon>LogInView.cs</DependentUpon>
