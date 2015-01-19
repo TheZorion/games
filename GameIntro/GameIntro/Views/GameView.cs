@@ -14,15 +14,12 @@ namespace GameIntro.Views
         
         Form _login;
         Form _equiptment;
-        Player.Player _p1;
         Controller.Controller _controller;
-        public GameView(Form login, Player.Player p1)
+        public GameView(Form login)
         {
             InitializeComponent();
             _login = login;
-            _p1 = p1;
-            _controller = Controller.Controller.getController(_p1);
-            _equiptment = new EquiptmentView(_p1);
+            _equiptment = new EquiptmentView();
         }
 
         
@@ -32,11 +29,11 @@ namespace GameIntro.Views
             base.OnKeyPress(e);
             if (e.KeyChar.ToString().Equals("i") && !_equiptment.Visible)
             {
-                _equiptment.Show();
+                EquiptmentView.GetView().Show();
             }
             else if (e.KeyChar.ToString().Equals("i") && _equiptment.Visible)
             {
-                _equiptment.Hide();
+                EquiptmentView.GetView().Hide();
             }
         }
         

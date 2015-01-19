@@ -5,5 +5,5 @@ using System.Text;
 
 namespace GameIntro.Item
 {
-    public enum Type{TwoHanded, OneHanded, Shield, Armor, Helmet, Shoes, Gloves, Pants}
+    public enum Type{TwoHanded, OneHanded, Shield, Armor, Helmet, Shoes, Gloves, Pants, Belt}
 }

@@ -9,16 +9,23 @@ namespace GameIntro.Controller
 {
     class Controller
     {
-        private static Player.Player player;
+        Player.Player player;
+        public Player.Player Player
+        {
+            get { return player; }
+            set {
+                if (player == null)
+                {
+                    player = value;
+                }
+            }
+        }
         private static Controller _controller;
 
-        public static Controller getController(Player.Player p1)
+        public static Controller getController()
         {
             if (_controller == null)
-            {
                 _controller = new Controller();
-                player = p1;
-            }
             return _controller;
         }
 
@@ -30,6 +37,19 @@ namespace GameIntro.Controller
         public void EquiptItem(Items item)
         {
             player.EquiptItem(item);
+        }
+
+        public void UnEquiptItem(Items item)
+        {
+            player.UnEquiptItem(item);
+        }
+        public Boolean UnEquiptItem(Item.Type type)
+        {
+            return player.UnEquiptItem(type);
+        }
+        public String ItemName(Item.Type type)
+        {
+            return player.ItemName(type);
         }
     }
 }

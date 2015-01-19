@@ -14,6 +14,7 @@ namespace GameIntro.Views
     {
         public LogInView()
         {
+            
             InitializeComponent();
             BackPressed();
             InitializeList();
@@ -35,9 +36,10 @@ namespace GameIntro.Views
             {
                 foreach(TypesOfRaces.Race race in Player.TypesOfRaces.GetRaces())
                     if (race.ToString().Equals(ClassList.SelectedItem.ToString()))
-                    {
-                        Player.Player p1 = Player.Player.GetPlayer(NameTextBox.Text, race, 200);
-                        GameView g = new GameView(this, p1);
+                    { 
+                        Controller.Controller c = Controller.Controller.getController();
+                        c.Player = Player.Player.GetPlayer(NameTextBox.Text, race, 200);
+                        GameView g = new GameView(this);
                         this.Hide();
                         g.Show();
                     }

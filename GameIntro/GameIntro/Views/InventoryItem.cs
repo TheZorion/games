@@ -51,7 +51,6 @@ namespace GameIntro.Views
         }
         void InventoryItem_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            EquiptItemArgs eq;
             EventHandler<EquiptItemArgs> handler = SelectItem;
             if(handler != null)
                 handler(this,new EquiptItemArgs(this));

@@ -13,21 +13,120 @@ namespace GameIntro.Views
 {
     public partial class EquiptmentView : Form
     {
-        Player.Player _p1;
+        static EquiptmentView _view;
+        List<PictureBox> images;
         ToolTip toolTip1;
         Controller.Controller _controller;
-        public EquiptmentView(Player.Player p1)
+        public EquiptmentView()
         {
-            _p1 = p1;
-            _controller = Controller.Controller.getController(_p1);
+            _controller = Controller.Controller.getController();
             InitializeComponent();
             InitializeToolTip();
             InitializeInventory();
-            FirstHandPic.MouseHover += new System.EventHandler(FirstHandPic_MouseHover);
-            //Inventory.MouseDoubleClick += Inventory_MouseDoubleClick;
-            //Inventory.MouseHover += Inventory_MouseHover;
+            AddPicturesToList();
+        }
+        public static EquiptmentView GetView()
+        {
+            if (_view == null)
+            {
+                _view = new EquiptmentView();
+                return _view;
+            }
+            else return _view;
+        }
+        private void AddPicturesToList()
+        {
+            images = new List<PictureBox>();
+            images.Add(FirstHandPic);
+            images.Add(SecondHandPic);
+            images.Add(PantsPic);
+            images.Add(HelmetPic);
+            images.Add(BootsPic);
+            images.Add(ArmorPic);
+            images.Add(BeltPic);
+            images.Add(Gloves1Pic);
+            images.Add(Gloves2Pic);
+
+            foreach (PictureBox picture in images)
+            {
+                picture.MouseHover += picture_MouseHover;
+                picture.MouseClick += picture_MouseClick;
+            }
         }
 
+        void picture_MouseClick(object sender, MouseEventArgs e)
+        {
+            if(e.Button == MouseButtons.Right){
+                if (((PictureBox)sender).Equals(FirstHandPic))
+                {
+                    if (!_controller.UnEquiptItem(Item.Type.OneHanded))
+                        _controller.UnEquiptItem(Item.Type.TwoHanded);
+                    FirstHandPic.BackgroundImage = null;
+                }
+                else if (((PictureBox)sender).Equals(SecondHandPic)){
+                    _controller.UnEquiptItem(Item.Type.Shield);
+                    SecondHandPic.BackgroundImage = null;
+                }
+                else if (((PictureBox)sender).Equals(HelmetPic))
+                {
+                    _controller.UnEquiptItem(Item.Type.Helmet);
+                    HelmetPic.BackgroundImage = null;
+                }
+                else if (((PictureBox)sender).Equals(ArmorPic))
+                {
+                    _controller.UnEquiptItem(Item.Type.Armor);
+                    ArmorPic.BackgroundImage = null;
+                }
+                else if (((PictureBox)sender).Equals(BeltPic))
+                {
+                    _controller.UnEquiptItem(Item.Type.Belt);
+                    BeltPic.BackgroundImage = null;
+                }
+                else if (((PictureBox)sender).Equals(PantsPic))
+                {
+                    _controller.UnEquiptItem(Item.Type.Pants);
+                    PantsPic.BackgroundImage = null;
+                }
+                else if (((PictureBox)sender).Equals(BootsPic))
+                {
+                    _controller.UnEquiptItem(Item.Type.Shoes);
+                    BootsPic.BackgroundImage = null;
+                }
+                else if (((PictureBox)sender).Equals(Gloves1Pic) || ((PictureBox)sender).Equals(Gloves2Pic))
+                {
+                    _controller.UnEquiptItem(Item.Type.Shoes);
+                    BootsPic.BackgroundImage = null;
+                }
+                InitializeInventory();
+
+            }
+        }
+
+        void picture_MouseHover(object sender, EventArgs e)
+        {
+            if (((PictureBox)sender).Equals(FirstHandPic))
+            {
+                String name =_controller.ItemName(Item.Type.OneHanded);
+                if(name != null)
+                    toolTip1.SetToolTip(FirstHandPic, name);
+                else
+                    toolTip1.SetToolTip(FirstHandPic, _controller.ItemName(Item.Type.TwoHanded));
+            }
+            else if (((PictureBox)sender).Equals(SecondHandPic) && _controller.ItemName(Item.Type.Shield) != null)
+                toolTip1.SetToolTip(SecondHandPic, _controller.ItemName(Item.Type.Shield));
+            else if (((PictureBox)sender).Equals(HelmetPic) && _controller.ItemName(Item.Type.Helmet)!= null)
+                toolTip1.SetToolTip(HelmetPic, _controller.ItemName(Item.Type.Helmet));
+            else if (((PictureBox)sender).Equals(ArmorPic) && _controller.ItemName(Item.Type.Armor)!= null)
+                toolTip1.SetToolTip(ArmorPic, _controller.ItemName(Item.Type.Armor));
+            else if ((((PictureBox)sender).Equals(Gloves1Pic) || ((PictureBox)sender).Equals(Gloves2Pic)) && _controller.ItemName(Item.Type.Gloves) != null)
+                toolTip1.SetToolTip(Gloves1Pic, _controller.ItemName(Item.Type.Gloves));
+            else if (((PictureBox)sender).Equals(PantsPic) && _controller.ItemName(Item.Type.Pants) != null)
+                toolTip1.SetToolTip(PantsPic, _controller.ItemName(Item.Type.Pants));
+            else if (((PictureBox)sender).Equals(BootsPic) && _controller.ItemName(Item.Type.Shoes) != null)
+                toolTip1.SetToolTip(BootsPic, _controller.ItemName(Item.Type.Shoes));
+            else if (((PictureBox)sender).Equals(BeltPic) && _controller.ItemName(Item.Type.Belt) != null)
+                toolTip1.SetToolTip(BeltPic, _controller.ItemName(Item.Type.Belt));
+        }
         private void InitializeInventory()
         {
             //*2 is random number but it works
@@ -49,17 +148,46 @@ namespace GameIntro.Views
             _controller.EquiptItem(e.InventoryItem.item);
             panel1.Controls.Remove(e.InventoryItem);
             InitializeInventory();
-            FirstHandPic.BackgroundImage = Image.FromFile(e.InventoryItem.item.GetPic());
-            FirstHandPic.BackgroundImageLayout = ImageLayout.Stretch;
+            switch (e.InventoryItem.item.TheType())
+            {
+                case Item.Type.OneHanded: 
+                    FirstHandPic.BackgroundImage = Image.FromFile(e.InventoryItem.item.GetPic());
+                    FirstHandPic.BackgroundImageLayout = ImageLayout.Stretch;
+                    break;
+                case Item.Type.Shield:
+                    SecondHandPic.BackgroundImage = Image.FromFile(e.InventoryItem.item.GetPic());
+                    SecondHandPic.BackgroundImageLayout = ImageLayout.Stretch;
+                    break;
+                case Item.Type.Armor:
+                    ArmorPic.BackgroundImage = Image.FromFile(e.InventoryItem.item.GetPic());
+                    ArmorPic.BackgroundImageLayout = ImageLayout.Stretch;
+                    break;
+                case Item.Type.Gloves:
+                    Gloves1Pic.BackgroundImage = Image.FromFile(e.InventoryItem.item.GetPic());
+                    Gloves1Pic.BackgroundImageLayout = ImageLayout.Stretch;
+                    Gloves2Pic.BackgroundImage = Image.FromFile(e.InventoryItem.item.GetPic());
+                    Gloves2Pic.BackgroundImageLayout = ImageLayout.Stretch;
+                    break;
+                case Item.Type.Helmet:
+                    HelmetPic.BackgroundImage = Image.FromFile(e.InventoryItem.item.GetPic());
+                    HelmetPic.BackgroundImageLayout = ImageLayout.Stretch;
+                    break;
+                case Item.Type.Pants:
+                    PantsPic.BackgroundImage = Image.FromFile(e.InventoryItem.item.GetPic());
+                    PantsPic.BackgroundImageLayout = ImageLayout.Stretch;
+                    break;
+                case Item.Type.Shoes:
+                    BootsPic.BackgroundImage = Image.FromFile(e.InventoryItem.item.GetPic());
+                    BootsPic.BackgroundImageLayout = ImageLayout.Stretch;
+                    break;
+                case Item.Type.TwoHanded:
+                    FirstHandPic.BackgroundImage = Image.FromFile(e.InventoryItem.item.GetPic());
+                    FirstHandPic.BackgroundImageLayout = ImageLayout.Stretch;
+                    SecondHandPic.BackgroundImage = null;
+                    break;
+            }
+            
 
-        }
-        void Inventory_MouseHover(object sender, EventArgs e)
-        {
-            //Point point = Inventory.PointToClient(Cursor.Position);
-            //int index = Inventory.IndexFromPoint(point);
-            //if (index < 0) return;
-            //Items item = ((InventoryItem)Inventory.Items[index]).item;
-            //toolTip1.SetToolTip(Inventory, item.ToString());
         }
         private void InitializeToolTip()
         {
@@ -71,16 +199,6 @@ namespace GameIntro.Views
             toolTip1.ReshowDelay = 500;
             // Force the ToolTip text to be displayed whether or not the form is active.
             toolTip1.ShowAlways = true;
-        }
-        
-        void FirstHandPic_MouseHover(object sender, EventArgs e)
-        {
-            List<Items> test = _p1.getItems();
-            Items i1 = test[0];
-            i1.ToString();
-            if(_p1.firstHand != null)
-                toolTip1.SetToolTip(this.FirstHandPic, _p1.firstHand.ToString());
-
         }
 
         void button1_KeyPress(object sender, KeyPressEventArgs e)

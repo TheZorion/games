@@ -28,35 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.HelmetPic = new System.Windows.Forms.PictureBox();
             this.FirstHandPic = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.ArmorPic = new System.Windows.Forms.PictureBox();
             this.SecondHandPic = new System.Windows.Forms.PictureBox();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.pictureBox7 = new System.Windows.Forms.PictureBox();
-            this.pictureBox8 = new System.Windows.Forms.PictureBox();
-            this.pictureBox11 = new System.Windows.Forms.PictureBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.Gloves1Pic = new System.Windows.Forms.PictureBox();
+            this.BootsPic = new System.Windows.Forms.PictureBox();
+            this.BeltPic = new System.Windows.Forms.PictureBox();
+            this.PantsPic = new System.Windows.Forms.PictureBox();
+            this.Gloves2Pic = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HelmetPic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FirstHandPic)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ArmorPic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SecondHandPic)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Gloves1Pic)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BootsPic)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BeltPic)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PantsPic)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Gloves2Pic)).BeginInit();
             this.SuspendLayout();
             // 
-            // pictureBox1
+            // HelmetPic
             // 
-            this.pictureBox1.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.pictureBox1.Location = new System.Drawing.Point(143, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(107, 71);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.HelmetPic.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.HelmetPic.Location = new System.Drawing.Point(143, 12);
+            this.HelmetPic.Name = "HelmetPic";
+            this.HelmetPic.Size = new System.Drawing.Size(107, 71);
+            this.HelmetPic.TabIndex = 0;
+            this.HelmetPic.TabStop = false;
             // 
             // FirstHandPic
             // 
@@ -67,14 +67,14 @@
             this.FirstHandPic.TabIndex = 1;
             this.FirstHandPic.TabStop = false;
             // 
-            // pictureBox3
+            // ArmorPic
             // 
-            this.pictureBox3.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.pictureBox3.Location = new System.Drawing.Point(141, 93);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(109, 138);
-            this.pictureBox3.TabIndex = 2;
-            this.pictureBox3.TabStop = false;
+            this.ArmorPic.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.ArmorPic.Location = new System.Drawing.Point(141, 93);
+            this.ArmorPic.Name = "ArmorPic";
+            this.ArmorPic.Size = new System.Drawing.Size(109, 138);
+            this.ArmorPic.TabIndex = 2;
+            this.ArmorPic.TabStop = false;
             // 
             // SecondHandPic
             // 
@@ -85,50 +85,50 @@
             this.SecondHandPic.TabIndex = 3;
             this.SecondHandPic.TabStop = false;
             // 
-            // pictureBox6
+            // Gloves1Pic
             // 
-            this.pictureBox6.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.pictureBox6.Location = new System.Drawing.Point(44, 254);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(81, 64);
-            this.pictureBox6.TabIndex = 5;
-            this.pictureBox6.TabStop = false;
+            this.Gloves1Pic.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.Gloves1Pic.Location = new System.Drawing.Point(44, 254);
+            this.Gloves1Pic.Name = "Gloves1Pic";
+            this.Gloves1Pic.Size = new System.Drawing.Size(81, 64);
+            this.Gloves1Pic.TabIndex = 5;
+            this.Gloves1Pic.TabStop = false;
             // 
-            // pictureBox7
+            // BootsPic
             // 
-            this.pictureBox7.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.pictureBox7.Location = new System.Drawing.Point(143, 455);
-            this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(107, 64);
-            this.pictureBox7.TabIndex = 6;
-            this.pictureBox7.TabStop = false;
+            this.BootsPic.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.BootsPic.Location = new System.Drawing.Point(143, 455);
+            this.BootsPic.Name = "BootsPic";
+            this.BootsPic.Size = new System.Drawing.Size(107, 64);
+            this.BootsPic.TabIndex = 6;
+            this.BootsPic.TabStop = false;
             // 
-            // pictureBox8
+            // BeltPic
             // 
-            this.pictureBox8.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.pictureBox8.Location = new System.Drawing.Point(141, 249);
-            this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(109, 30);
-            this.pictureBox8.TabIndex = 7;
-            this.pictureBox8.TabStop = false;
+            this.BeltPic.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.BeltPic.Location = new System.Drawing.Point(141, 249);
+            this.BeltPic.Name = "BeltPic";
+            this.BeltPic.Size = new System.Drawing.Size(109, 30);
+            this.BeltPic.TabIndex = 7;
+            this.BeltPic.TabStop = false;
             // 
-            // pictureBox11
+            // PantsPic
             // 
-            this.pictureBox11.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.pictureBox11.Location = new System.Drawing.Point(141, 296);
-            this.pictureBox11.Name = "pictureBox11";
-            this.pictureBox11.Size = new System.Drawing.Size(109, 138);
-            this.pictureBox11.TabIndex = 10;
-            this.pictureBox11.TabStop = false;
+            this.PantsPic.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.PantsPic.Location = new System.Drawing.Point(141, 296);
+            this.PantsPic.Name = "PantsPic";
+            this.PantsPic.Size = new System.Drawing.Size(109, 138);
+            this.PantsPic.TabIndex = 10;
+            this.PantsPic.TabStop = false;
             // 
-            // pictureBox5
+            // Gloves2Pic
             // 
-            this.pictureBox5.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.pictureBox5.Location = new System.Drawing.Point(269, 254);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(81, 64);
-            this.pictureBox5.TabIndex = 11;
-            this.pictureBox5.TabStop = false;
+            this.Gloves2Pic.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.Gloves2Pic.Location = new System.Drawing.Point(269, 254);
+            this.Gloves2Pic.Name = "Gloves2Pic";
+            this.Gloves2Pic.Size = new System.Drawing.Size(81, 64);
+            this.Gloves2Pic.TabIndex = 11;
+            this.Gloves2Pic.TabStop = false;
             // 
             // panel1
             // 
@@ -146,40 +146,40 @@
             this.ClientSize = new System.Drawing.Size(819, 564);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.FirstHandPic);
-            this.Controls.Add(this.pictureBox5);
-            this.Controls.Add(this.pictureBox11);
-            this.Controls.Add(this.pictureBox8);
-            this.Controls.Add(this.pictureBox7);
-            this.Controls.Add(this.pictureBox6);
+            this.Controls.Add(this.Gloves2Pic);
+            this.Controls.Add(this.PantsPic);
+            this.Controls.Add(this.BeltPic);
+            this.Controls.Add(this.BootsPic);
+            this.Controls.Add(this.Gloves1Pic);
             this.Controls.Add(this.SecondHandPic);
-            this.Controls.Add(this.pictureBox3);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.ArmorPic);
+            this.Controls.Add(this.HelmetPic);
             this.Name = "EquiptmentView";
             this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HelmetPic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FirstHandPic)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ArmorPic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SecondHandPic)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Gloves1Pic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BootsPic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BeltPic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PantsPic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Gloves2Pic)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox HelmetPic;
         private System.Windows.Forms.PictureBox FirstHandPic;
-        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox ArmorPic;
         private System.Windows.Forms.PictureBox SecondHandPic;
-        private System.Windows.Forms.PictureBox pictureBox6;
-        private System.Windows.Forms.PictureBox pictureBox7;
-        private System.Windows.Forms.PictureBox pictureBox8;
-        private System.Windows.Forms.PictureBox pictureBox11;
-        private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.PictureBox Gloves1Pic;
+        private System.Windows.Forms.PictureBox BootsPic;
+        private System.Windows.Forms.PictureBox BeltPic;
+        private System.Windows.Forms.PictureBox PantsPic;
+        private System.Windows.Forms.PictureBox Gloves2Pic;
         private System.Windows.Forms.Panel panel1;
     }
 }

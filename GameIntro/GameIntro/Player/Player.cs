@@ -92,6 +92,33 @@ namespace GameIntro.Player
             equiptment.Add(item);
             return equiptment.Count;
         }
+        public void UnEquiptItem(Items item)
+        {
+            if (item != null && equiptment.Contains(item))
+            {
+                equiptment.Remove(item);
+                Inventory.Add(item);
+            }
+        }
+        public bool UnEquiptItem(Item.Type type)
+        {
+            foreach (Items item in equiptment)
+                if (item.TheType() == type)
+                {
+                    equiptment.Remove(item);
+                    Inventory.Add(item);
+                    return true;
+                }
+            return false;
+        }
+        public String ItemName(Item.Type type)
+        {
+            foreach (Items item in equiptment)
+                if (item.TheType() == type)
+                    return item.ToString();
+            return null;
+
+        }
         public List<Items> getItems()
         {
             return equiptment;
