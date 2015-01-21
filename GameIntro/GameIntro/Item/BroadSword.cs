@@ -13,11 +13,12 @@ namespace GameIntro.Item
         int _durability;
         int _special;
         String _name;
-        Random r = new Random();
+        Random r;
 
         public BroadSword(String name)
         {
-            _damage = r.Next(10);
+            r = new Random();
+            _damage = r.Next(0,10);
             Durability = r.Next(30) + 20;
             _magicDamage = r.Next(10);
             _name = name;

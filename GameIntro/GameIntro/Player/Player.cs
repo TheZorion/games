@@ -11,30 +11,21 @@ namespace GameIntro.Player
         private static Player _player;
         List<Items> Inventory = new List<Items>();
         List<Items> equiptment = new List<Items>();
-        public Items firstHand{get;set;}
-        public Items shield { get; set; }
-        public Items belt { get; set; }
-        public Items armor { get; set; }
-        public Items pants { get; set; }
-        public Items boots { get; set; }
-        public Items helmet { get; set; }
-        public Items ring { get; set; }
-        public Items amulet { get; set; }
-        public Items gloves { get; set; }
         private Player(String name, TypesOfRaces.Race race, int health) 
             : base (name, race, health){
-                Inventory.Add(new BroadSword("Bad sword"));    
-            Inventory.Add(new BroadSword("Excellent broadsword"));
-            Inventory.Add(new BroadSword("Bad sword"));
-            Inventory.Add(new BroadSword("Excellent broadsword"));
             Inventory.Add(new BroadSword("Bad sword"));    
-            Inventory.Add(new BroadSword("Excellent broadsword"));
-            Inventory.Add(new BroadSword("Excellent broadsword"));
+            Inventory.Add(new BroadSword("Excellent1 broadsword"));
             Inventory.Add(new BroadSword("Bad sword"));
-            Inventory.Add(new BroadSword("Excellent broadsword"));
-            Inventory.Add(new BroadSword("Excellent broadsword"));
+            Inventory.Add(new BroadSword("Excellent2 broadsword"));
+            Inventory.Add(new BroadSword("Bad sword"));    
+            Inventory.Add(new BroadSword("Excellent3 broadsword"));
+            Inventory.Add(new BroadSword("Excellent4 broadsword"));
             Inventory.Add(new BroadSword("Bad sword"));
-            Inventory.Add(new BroadSword("Excellent broadsword"));
+            Inventory.Add(new BroadSword("Excellent5 broadsword"));
+            Inventory.Add(new BroadSword("Excellent6 broadsword"));
+            Inventory.Add(new BroadSword("Bad sword"));
+            Inventory.Add(new BroadSword("Excellent7 broadsword"));
+            equiptment.Add(new BroadSword("Equipted"));
                 
         }
         public static Player GetPlayer(String name, TypesOfRaces.Race race, int health)
@@ -64,32 +55,24 @@ namespace GameIntro.Player
         }
         public int EquiptItem(Items item)
         {
+            //Remove equited item
             foreach (Items i in equiptment)
                 if (i.TheType() == item.TheType())
                 {
                     equiptment.Remove(i);
                     Inventory.Add(i); break;
                 }
-            switch (item.TheType())
-            {
-                case Item.Type.Gloves: gloves = item; break;
-                case Item.Type.Pants: pants = item; break;
-                case Item.Type.Armor: armor = item; break;
-                case Item.Type.Helmet: helmet = item;break;
-                case Item.Type.OneHanded: firstHand = item;break;
-                case Item.Type.Shield: shield = item; break;
-                case Item.Type.Shoes: boots = item;break;
-                case Item.Type.TwoHanded: firstHand = item;
-                    if(shield != null){
-                        foreach (Items eq in equiptment)
-                            if(eq.TheType() == Item.Type.Shield)
-                                equiptment.Remove(eq);
-                        shield = null;
-                    }
-                    break;                
-            }
             Inventory.Remove(item);
             equiptment.Add(item);
+            //Removing shield if a two-hand weapon is equipted
+            if (item.TheType() == Item.Type.TwoHanded)
+                foreach (Items i in equiptment)
+                    if (i.TheType() == Item.Type.Shield)
+                    {
+                        equiptment.Remove(i);
+                        Inventory.Add(i);
+                        break;
+                    }
             return equiptment.Count;
         }
         public void UnEquiptItem(Items item)
@@ -119,7 +102,7 @@ namespace GameIntro.Player
             return null;
 
         }
-        public List<Items> getItems()
+        public List<Items> GetEquiptment()
         {
             return equiptment;
         }

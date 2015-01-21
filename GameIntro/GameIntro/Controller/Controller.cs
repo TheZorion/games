@@ -33,6 +33,10 @@ namespace GameIntro.Controller
         {
             return player.GetInventory();
         }
+        public List<Items> GetEquiptment()
+        {
+            return player.GetEquiptment();
+        }
 
         public void EquiptItem(Items item)
         {

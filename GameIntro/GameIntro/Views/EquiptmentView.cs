@@ -17,13 +17,68 @@ namespace GameIntro.Views
         List<PictureBox> images;
         ToolTip toolTip1;
         Controller.Controller _controller;
-        public EquiptmentView()
+        private EquiptmentView()
         {
             _controller = Controller.Controller.getController();
             InitializeComponent();
             InitializeToolTip();
             InitializeInventory();
+            InitializeEquiptment();
             AddPicturesToList();
+            this.FormClosing += EquiptmentView_FormClosing;
+            this.KeyPress += EquiptmentView_KeyPress;
+        }
+
+        void EquiptmentView_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            base.OnKeyPress(e);
+            if (e.KeyChar.ToString().Equals("i"))
+            {
+                this.Hide();
+
+            }
+        }
+        // Use this event handler for the FormClosing event.
+        private void InitializeEquiptment()
+        {
+            List<Items> equiptment = _controller.GetEquiptment();
+            foreach(Items i in equiptment)
+            {
+                switch (i.TheType())
+                {
+                    case Item.Type.Armor: ArmorPic.BackgroundImage = Image.FromFile(i.GetPic());
+                        ArmorPic.BackgroundImageLayout = ImageLayout.Stretch;
+                        break;
+                    case Item.Type.Helmet: HelmetPic.BackgroundImage = Image.FromFile(i.GetPic()); 
+                        HelmetPic.BackgroundImageLayout = ImageLayout.Stretch;break;
+                    case Item.Type.OneHanded:
+                    case Item.Type.TwoHanded: FirstHandPic.BackgroundImage = Image.FromFile(i.GetPic()); 
+                    FirstHandPic.BackgroundImageLayout = ImageLayout.Stretch;
+                    break;
+                    case Item.Type.Shield: SecondHandPic.BackgroundImage = Image.FromFile(i.GetPic()); 
+                        SecondHandPic.BackgroundImageLayout = ImageLayout.Stretch;
+                        break;
+                    case Item.Type.Belt: BeltPic.BackgroundImage = Image.FromFile(i.GetPic()); 
+                        BeltPic.BackgroundImageLayout = ImageLayout.Stretch;
+                        break;
+                    case Item.Type.Pants: PantsPic.BackgroundImage = Image.FromFile(i.GetPic()); 
+                        PantsPic.BackgroundImageLayout = ImageLayout.Stretch;
+                        break;
+                    case Item.Type.Gloves: Gloves1Pic.BackgroundImage = Image.FromFile(i.GetPic()); 
+                        Gloves2Pic.BackgroundImage = Image.FromFile(i.GetPic());
+                        Gloves1Pic.BackgroundImageLayout = ImageLayout.Stretch;
+                        Gloves2Pic.BackgroundImageLayout = ImageLayout.Stretch;
+                        break;
+                    case Item.Type.Shoes: BootsPic.BackgroundImage = Image.FromFile(i.GetPic()); 
+                        BootsPic.BackgroundImageLayout = ImageLayout.Stretch;
+                        break;
+                }
+            }
+        }
+        void EquiptmentView_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Hide();
+            e.Cancel = true; // this cancels the close event.
         }
         public static EquiptmentView GetView()
         {
@@ -199,22 +254,6 @@ namespace GameIntro.Views
             toolTip1.ReshowDelay = 500;
             // Force the ToolTip text to be displayed whether or not the form is active.
             toolTip1.ShowAlways = true;
-        }
-
-        void button1_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar.ToString().Equals("i"))
-                this.Hide();
-        }
-
-        
-        protected override void OnKeyPress(KeyPressEventArgs e)
-        {
-            base.OnKeyPress(e);
-            if (e.KeyChar.ToString().Equals("i"))
-            {
-                this.Hide();
-            }
         }
     }
 }

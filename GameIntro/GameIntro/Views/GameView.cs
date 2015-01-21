@@ -19,7 +19,7 @@ namespace GameIntro.Views
         {
             InitializeComponent();
             _login = login;
-            _equiptment = new EquiptmentView();
+            _equiptment = EquiptmentView.GetView();
         }
 
         
@@ -28,13 +28,9 @@ namespace GameIntro.Views
         {
             base.OnKeyPress(e);
             if (e.KeyChar.ToString().Equals("i") && !_equiptment.Visible)
-            {
                 EquiptmentView.GetView().Show();
-            }
             else if (e.KeyChar.ToString().Equals("i") && _equiptment.Visible)
-            {
                 EquiptmentView.GetView().Hide();
-            }
         }
         
         protected override void OnFormClosing(FormClosingEventArgs e)
