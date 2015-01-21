@@ -12,6 +12,7 @@ namespace GameIntro.Views
     
     public partial class InventoryItem : UserControl
     {
+        List<Control> controls = new List<Control>();
         public Item.Items item{get;set;}
         public event EventHandler<EquiptItemArgs> SelectItem;
         ToolTip toolTip1 = new ToolTip();
@@ -20,9 +21,21 @@ namespace GameIntro.Views
             InitializeComponent();
             this.item = item;
             InitializeDescription();
-            this.MouseDoubleClick += InventoryItem_MouseDoubleClick;
-            this.MouseClick += InventoryItem_MouseClick;
-            this.MouseHover += InventoryItem_MouseHover;
+            InitializeEvents();
+        }
+
+        private void InitializeEvents()
+        {
+            controls.Add(Description);
+            controls.Add(DamageArmor);
+            controls.Add(Special);
+            controls.Add(this);
+            foreach (Control c in controls)
+            {
+                c.MouseClick += InventoryItem_MouseClick;
+                c.MouseHover += InventoryItem_MouseHover;
+                c.MouseDoubleClick += InventoryItem_MouseDoubleClick;
+            }
         }
 
         void InventoryItem_MouseClick(object sender, MouseEventArgs e)
@@ -58,14 +71,14 @@ namespace GameIntro.Views
         private InventoryItem() { }
         private void InitializeDescription()
         {
-            Description.Text = item.Name();
-            Special.Text = ""+item.Special();
-            if (item.TheType() == Item.Type.Armor || item.TheType() == Item.Type.Gloves || item.TheType() == Item.Type.Helmet || item.TheType() == Item.Type.Pants || item.TheType() == Item.Type.Shield || item.TheType() == Item.Type.Shoes)
+            Description.Text = item.Name;
+            Special.Text = ""+item.Special;
+            if (item.Type == Item.Type.OneHanded || item.Type == Item.Type.TwoHanded)
             {
-                DamageArmor.Text = "Armor: " + item.GetDefense();
+                DamageArmor.Text = "Damage: " + item.Damage + " + " + item.MagicDamage;
             }
             else
-                DamageArmor.Text = "Damage: " + item.Damage() + " + " + item.MagicDamage();
+                DamageArmor.Text = "Armor: " + item.Defense;
 
         }
         public static int width()

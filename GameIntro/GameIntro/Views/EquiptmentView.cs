@@ -44,7 +44,7 @@ namespace GameIntro.Views
             List<Items> equiptment = _controller.GetEquiptment();
             foreach(Items i in equiptment)
             {
-                switch (i.TheType())
+                switch (i.Type)
                 {
                     case Item.Type.Armor: ArmorPic.BackgroundImage = Image.FromFile(i.GetPic());
                         ArmorPic.BackgroundImageLayout = ImageLayout.Stretch;
@@ -149,8 +149,9 @@ namespace GameIntro.Views
                 }
                 else if (((PictureBox)sender).Equals(Gloves1Pic) || ((PictureBox)sender).Equals(Gloves2Pic))
                 {
-                    _controller.UnEquiptItem(Item.Type.Shoes);
-                    BootsPic.BackgroundImage = null;
+                    _controller.UnEquiptItem(Item.Type.Gloves);
+                    Gloves1Pic.BackgroundImage = null;
+                    Gloves2Pic.BackgroundImage = null;
                 }
                 InitializeInventory();
 
@@ -203,8 +204,12 @@ namespace GameIntro.Views
             _controller.EquiptItem(e.InventoryItem.item);
             panel1.Controls.Remove(e.InventoryItem);
             InitializeInventory();
-            switch (e.InventoryItem.item.TheType())
+            switch (e.InventoryItem.item.Type)
             {
+                case Item.Type.Belt :
+                    BeltPic.BackgroundImage = Image.FromFile(e.InventoryItem.item.GetPic());
+                    BeltPic.BackgroundImageLayout = ImageLayout.Stretch;
+                    break;
                 case Item.Type.OneHanded: 
                     FirstHandPic.BackgroundImage = Image.FromFile(e.InventoryItem.item.GetPic());
                     FirstHandPic.BackgroundImageLayout = ImageLayout.Stretch;

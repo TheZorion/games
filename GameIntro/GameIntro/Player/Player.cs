@@ -14,18 +14,14 @@ namespace GameIntro.Player
         private Player(String name, TypesOfRaces.Race race, int health) 
             : base (name, race, health){
             Inventory.Add(new BroadSword("Bad sword"));    
-            Inventory.Add(new BroadSword("Excellent1 broadsword"));
-            Inventory.Add(new BroadSword("Bad sword"));
-            Inventory.Add(new BroadSword("Excellent2 broadsword"));
-            Inventory.Add(new BroadSword("Bad sword"));    
-            Inventory.Add(new BroadSword("Excellent3 broadsword"));
-            Inventory.Add(new BroadSword("Excellent4 broadsword"));
-            Inventory.Add(new BroadSword("Bad sword"));
-            Inventory.Add(new BroadSword("Excellent5 broadsword"));
-            Inventory.Add(new BroadSword("Excellent6 broadsword"));
-            Inventory.Add(new BroadSword("Bad sword"));
-            Inventory.Add(new BroadSword("Excellent7 broadsword"));
-            equiptment.Add(new BroadSword("Equipted"));
+            Inventory.Add(new SteelCap("Excellet Steel Cap"));
+            Inventory.Add(new SteelArmor("Excellet Steel Armor"));
+            Inventory.Add(new SteelPants("Excellet Steel Legs"));
+            Inventory.Add(new SteelBelt("Excellet Steel Belt"));
+            Inventory.Add(new SteelBoots("Excellet Steel Boots"));
+            Inventory.Add(new SteelGlove("Excellet Steel Gloves"));
+            Inventory.Add(new Buckle("Excellet Buckle"));
+
                 
         }
         public static Player GetPlayer(String name, TypesOfRaces.Race race, int health)
@@ -40,7 +36,7 @@ namespace GameIntro.Player
             int defense = 0;
             foreach (Items item in equiptment)
             {
-                defense += item.GetDefense();
+                defense += item.Defense;
             }
             return defense;
         }
@@ -49,7 +45,7 @@ namespace GameIntro.Player
             int attack = 0;
             foreach (Items item in equiptment)
             {
-                attack += item.GetAttack();
+                attack += item.Damage;
             }
             return attack;
         }
@@ -57,7 +53,7 @@ namespace GameIntro.Player
         {
             //Remove equited item
             foreach (Items i in equiptment)
-                if (i.TheType() == item.TheType())
+                if (i.Type == item.Type)
                 {
                     equiptment.Remove(i);
                     Inventory.Add(i); break;
@@ -65,9 +61,9 @@ namespace GameIntro.Player
             Inventory.Remove(item);
             equiptment.Add(item);
             //Removing shield if a two-hand weapon is equipted
-            if (item.TheType() == Item.Type.TwoHanded)
+            if (item.Type == Item.Type.TwoHanded)
                 foreach (Items i in equiptment)
-                    if (i.TheType() == Item.Type.Shield)
+                    if (i.Type == Item.Type.Shield)
                     {
                         equiptment.Remove(i);
                         Inventory.Add(i);
@@ -86,7 +82,7 @@ namespace GameIntro.Player
         public bool UnEquiptItem(Item.Type type)
         {
             foreach (Items item in equiptment)
-                if (item.TheType() == type)
+                if (item.Type == type)
                 {
                     equiptment.Remove(item);
                     Inventory.Add(item);
@@ -97,7 +93,7 @@ namespace GameIntro.Player
         public String ItemName(Item.Type type)
         {
             foreach (Items item in equiptment)
-                if (item.TheType() == type)
+                if (item.Type == type)
                     return item.ToString();
             return null;
 

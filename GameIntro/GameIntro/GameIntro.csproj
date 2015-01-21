@@ -51,6 +51,13 @@
   <ItemGroup>
     <Compile Include="Controller\Controller.cs" />
     <Compile Include="Item\BroadSword.cs" />
+    <Compile Include="Item\Buckle.cs" />
+    <Compile Include="Item\Glove.cs" />
+    <Compile Include="Item\SteelArmor.cs" />
+    <Compile Include="Item\SteelBelt.cs" />
+    <Compile Include="Item\SteelBoots.cs" />
+    <Compile Include="Item\SteelCap.cs" />
+    <Compile Include="Item\SteelPants.cs" />
     <Compile Include="Player\Orc.cs" />
     <Compile Include="Views\EquiptmentView.cs">
       <SubType>Form</SubType>
@@ -114,8 +121,15 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Pictures\" />
+    <Content Include="Pictures\buckle.jpg" />
+    <Content Include="Pictures\steelArmor.png" />
+    <Content Include="Pictures\steelBelt.jpg" />
+    <Content Include="Pictures\steelBoots.jpg" />
+    <Content Include="Pictures\steelCap.jpg" />
+    <Content Include="Pictures\steelGlove.jpg" />
+    <Content Include="Pictures\steelPants.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
