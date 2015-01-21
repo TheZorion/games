@@ -28,7 +28,10 @@ namespace GameIntro.Controller
                 _controller = new Controller();
             return _controller;
         }
-
+        public List<Items> GetShopInventory()
+        {
+            return ShopManager.GetShopManager().Items;
+        }
         public List<Items> getInventory()
         {
             return player.GetInventory();
@@ -54,6 +57,38 @@ namespace GameIntro.Controller
         public String ItemName(Item.Type type)
         {
             return player.ItemName(type);
+        }
+        public int SellItem(Items item)
+        {
+            ShopManager.GetShopManager().BuyItem(item);
+            return player.SellItem(item);
+        }
+
+        public int BuyItem(Items item)
+        {
+            ShopManager.GetShopManager().SellItem(item);
+            return player.BuyItem(item);
+        }
+
+        public void AddMethodToMoneyChanged(EventHandler<MoneyArgs> Args)
+        {
+            player.MoneyChanged += Args;
+        }
+        public void AddMethodToInventoryChanged(EventHandler<InventoryArgs> Args)
+        {
+            player.InventoryChanged += Args;
+        }
+        public void AddMethodToEquiptmentChanged(EventHandler<EquiptmentArgs> Args)
+        {
+            player.EquiptmentChanged += Args;
+        }
+        public void AddMethodToManaChanged(EventHandler<ManaArgs> Args)
+        {
+            player.ManaChanged += Args;
+        }
+        public void AddMethodToHealthChanged(EventHandler<HealthArgs> Args)
+        {
+            player.HealthChanged += Args;
         }
     }
 }

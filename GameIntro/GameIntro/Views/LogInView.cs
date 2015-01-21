@@ -38,7 +38,7 @@ namespace GameIntro.Views
                     if (race.ToString().Equals(ClassList.SelectedItem.ToString()))
                     { 
                         Controller.Controller c = Controller.Controller.getController();
-                        c.Player = Player.Player.GetPlayer(NameTextBox.Text, race, 200);
+                        c.Player = Player.Player.GetPlayer(NameTextBox.Text, race, 200, 100);
                         GameView g = new GameView(this);
                         this.Hide();
                         g.Show();

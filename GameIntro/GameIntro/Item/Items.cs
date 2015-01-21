@@ -15,7 +15,9 @@ namespace GameIntro.Item
         private Type _type = Type.Armor;
         private int _durability = 0;
         private int _special = 0;
+        private int _value = 1;
         private Random r = new Random();
+        public int Value { get { return _value; } set { _value = value; } }
         public Random Random {get{return r;}}
         public String Name { get { return _name; } set { _name = value; } }
         public int Damage { get { return _damage; } set { _damage = value;} }

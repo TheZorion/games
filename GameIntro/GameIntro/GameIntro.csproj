@@ -59,6 +59,19 @@
     <Compile Include="Item\SteelCap.cs" />
     <Compile Include="Item\SteelPants.cs" />
     <Compile Include="Player\Orc.cs" />
+    <Compile Include="Player\ShopManager.cs" />
+    <Compile Include="Views\Arena.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Arena.Designer.cs">
+      <DependentUpon>Arena.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CreatureStats.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\CreatureStats.Designer.cs">
+      <DependentUpon>CreatureStats.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\EquiptmentView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,6 +103,18 @@
     <Compile Include="Views\LogInView.Designer.cs">
       <DependentUpon>LogInView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Shop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Shop.Designer.cs">
+      <DependentUpon>Shop.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Views\Arena.resx">
+      <DependentUpon>Arena.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CreatureStats.resx">
+      <DependentUpon>CreatureStats.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\EquiptmentView.resx">
       <DependentUpon>EquiptmentView.cs</DependentUpon>
     </EmbeddedResource>
@@ -101,6 +126,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Views\GameView.resx">
       <DependentUpon>GameView.cs</DependentUpon>
@@ -110,6 +136,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\LogInView.resx">
       <DependentUpon>LogInView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Shop.resx">
+      <DependentUpon>Shop.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -123,7 +152,13 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="Pictures\arena.jpg" />
     <Content Include="Pictures\buckle.jpg" />
+    <Content Include="Pictures\knight.jpg" />
+    <Content Include="Pictures\landscape.jpg" />
+    <Content Include="Pictures\orc.jpg" />
+    <Content Include="Pictures\playerBackground.jpg" />
+    <Content Include="Pictures\Shop.jpg" />
     <Content Include="Pictures\steelArmor.png" />
     <Content Include="Pictures\steelBelt.jpg" />
     <Content Include="Pictures\steelBoots.jpg" />

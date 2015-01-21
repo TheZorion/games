@@ -133,16 +133,18 @@
             // panel1
             // 
             this.panel1.AutoScroll = true;
-            this.panel1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.panel1.Location = new System.Drawing.Point(415, 73);
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.Location = new System.Drawing.Point(415, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(297, 305);
+            this.panel1.Size = new System.Drawing.Size(297, 507);
             this.panel1.TabIndex = 14;
             // 
             // EquiptmentView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::GameIntro.Properties.Resources.playerBackground;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(819, 564);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.FirstHandPic);
@@ -154,6 +156,7 @@
             this.Controls.Add(this.SecondHandPic);
             this.Controls.Add(this.ArmorPic);
             this.Controls.Add(this.HelmetPic);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "EquiptmentView";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.HelmetPic)).EndInit();

@@ -24,6 +24,8 @@ namespace GameIntro.Views
             InitializeEvents();
         }
 
+        private InventoryItem() { }
+
         private void InitializeEvents()
         {
             controls.Add(Description);
@@ -68,7 +70,6 @@ namespace GameIntro.Views
             if(handler != null)
                 handler(this,new EquiptItemArgs(this));
         }
-        private InventoryItem() { }
         private void InitializeDescription()
         {
             Description.Text = item.Name;

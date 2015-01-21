@@ -22,13 +22,21 @@ namespace GameIntro.Views
             _controller = Controller.Controller.getController();
             InitializeComponent();
             InitializeToolTip();
-            InitializeInventory();
-            InitializeEquiptment();
+            InitializeInventory(_controller.getInventory());
             AddPicturesToList();
             this.FormClosing += EquiptmentView_FormClosing;
             this.KeyPress += EquiptmentView_KeyPress;
+            _controller.AddMethodToInventoryChanged(player_InventoryChanged);
+            _controller.AddMethodToEquiptmentChanged(player_EquiptmentChanged);
         }
-
+        void player_EquiptmentChanged(object sender, Player.EquiptmentArgs e)
+        {
+            InitializeEquiptment(e.GetEquiptment);
+        }
+        void player_InventoryChanged(object sender, Player.InventoryArgs e)
+        {
+            InitializeInventory(e.GetInventory);
+        }
         void EquiptmentView_KeyPress(object sender, KeyPressEventArgs e)
         {
             base.OnKeyPress(e);
@@ -39,9 +47,17 @@ namespace GameIntro.Views
             }
         }
         // Use this event handler for the FormClosing event.
-        private void InitializeEquiptment()
+        private void InitializeEquiptment(List<Items> equiptment)
         {
-            List<Items> equiptment = _controller.GetEquiptment();
+            ArmorPic.BackgroundImage = null;
+            HelmetPic.BackgroundImage = null;
+            FirstHandPic.BackgroundImage = null;
+            SecondHandPic.BackgroundImage = null;
+            BeltPic.BackgroundImage = null;
+            PantsPic.BackgroundImage = null;
+            BootsPic.BackgroundImage = null;
+            Gloves1Pic.BackgroundImage = null;
+            Gloves2Pic.BackgroundImage = null;
             foreach(Items i in equiptment)
             {
                 switch (i.Type)
@@ -64,7 +80,8 @@ namespace GameIntro.Views
                     case Item.Type.Pants: PantsPic.BackgroundImage = Image.FromFile(i.GetPic()); 
                         PantsPic.BackgroundImageLayout = ImageLayout.Stretch;
                         break;
-                    case Item.Type.Gloves: Gloves1Pic.BackgroundImage = Image.FromFile(i.GetPic()); 
+                    case Item.Type.Gloves: 
+                        Gloves1Pic.BackgroundImage = Image.FromFile(i.GetPic()); 
                         Gloves2Pic.BackgroundImage = Image.FromFile(i.GetPic());
                         Gloves1Pic.BackgroundImageLayout = ImageLayout.Stretch;
                         Gloves2Pic.BackgroundImageLayout = ImageLayout.Stretch;
@@ -116,45 +133,21 @@ namespace GameIntro.Views
                 {
                     if (!_controller.UnEquiptItem(Item.Type.OneHanded))
                         _controller.UnEquiptItem(Item.Type.TwoHanded);
-                    FirstHandPic.BackgroundImage = null;
                 }
-                else if (((PictureBox)sender).Equals(SecondHandPic)){
+                else if (((PictureBox)sender).Equals(SecondHandPic))
                     _controller.UnEquiptItem(Item.Type.Shield);
-                    SecondHandPic.BackgroundImage = null;
-                }
                 else if (((PictureBox)sender).Equals(HelmetPic))
-                {
                     _controller.UnEquiptItem(Item.Type.Helmet);
-                    HelmetPic.BackgroundImage = null;
-                }
                 else if (((PictureBox)sender).Equals(ArmorPic))
-                {
                     _controller.UnEquiptItem(Item.Type.Armor);
-                    ArmorPic.BackgroundImage = null;
-                }
                 else if (((PictureBox)sender).Equals(BeltPic))
-                {
                     _controller.UnEquiptItem(Item.Type.Belt);
-                    BeltPic.BackgroundImage = null;
-                }
                 else if (((PictureBox)sender).Equals(PantsPic))
-                {
                     _controller.UnEquiptItem(Item.Type.Pants);
-                    PantsPic.BackgroundImage = null;
-                }
                 else if (((PictureBox)sender).Equals(BootsPic))
-                {
                     _controller.UnEquiptItem(Item.Type.Shoes);
-                    BootsPic.BackgroundImage = null;
-                }
                 else if (((PictureBox)sender).Equals(Gloves1Pic) || ((PictureBox)sender).Equals(Gloves2Pic))
-                {
                     _controller.UnEquiptItem(Item.Type.Gloves);
-                    Gloves1Pic.BackgroundImage = null;
-                    Gloves2Pic.BackgroundImage = null;
-                }
-                InitializeInventory();
-
             }
         }
 
@@ -183,12 +176,11 @@ namespace GameIntro.Views
             else if (((PictureBox)sender).Equals(BeltPic) && _controller.ItemName(Item.Type.Belt) != null)
                 toolTip1.SetToolTip(BeltPic, _controller.ItemName(Item.Type.Belt));
         }
-        private void InitializeInventory()
+        private void InitializeInventory(List<Items> items)
         {
             //*2 is random number but it works
             panel1.Controls.Clear();
             panel1.Width = InventoryItem.width()*2;
-            List<Items> items = _controller.getInventory();
             for (int i = 0; i < items.Count; i++)
             {
                 InventoryItem II = new InventoryItem(items[i]);
@@ -199,55 +191,8 @@ namespace GameIntro.Views
             }
         }
 
-        void II_SelectItem(object sender, EquiptItemArgs e)
-        {
+        void II_SelectItem(object sender, EquiptItemArgs e){
             _controller.EquiptItem(e.InventoryItem.item);
-            panel1.Controls.Remove(e.InventoryItem);
-            InitializeInventory();
-            switch (e.InventoryItem.item.Type)
-            {
-                case Item.Type.Belt :
-                    BeltPic.BackgroundImage = Image.FromFile(e.InventoryItem.item.GetPic());
-                    BeltPic.BackgroundImageLayout = ImageLayout.Stretch;
-                    break;
-                case Item.Type.OneHanded: 
-                    FirstHandPic.BackgroundImage = Image.FromFile(e.InventoryItem.item.GetPic());
-                    FirstHandPic.BackgroundImageLayout = ImageLayout.Stretch;
-                    break;
-                case Item.Type.Shield:
-                    SecondHandPic.BackgroundImage = Image.FromFile(e.InventoryItem.item.GetPic());
-                    SecondHandPic.BackgroundImageLayout = ImageLayout.Stretch;
-                    break;
-                case Item.Type.Armor:
-                    ArmorPic.BackgroundImage = Image.FromFile(e.InventoryItem.item.GetPic());
-                    ArmorPic.BackgroundImageLayout = ImageLayout.Stretch;
-                    break;
-                case Item.Type.Gloves:
-                    Gloves1Pic.BackgroundImage = Image.FromFile(e.InventoryItem.item.GetPic());
-                    Gloves1Pic.BackgroundImageLayout = ImageLayout.Stretch;
-                    Gloves2Pic.BackgroundImage = Image.FromFile(e.InventoryItem.item.GetPic());
-                    Gloves2Pic.BackgroundImageLayout = ImageLayout.Stretch;
-                    break;
-                case Item.Type.Helmet:
-                    HelmetPic.BackgroundImage = Image.FromFile(e.InventoryItem.item.GetPic());
-                    HelmetPic.BackgroundImageLayout = ImageLayout.Stretch;
-                    break;
-                case Item.Type.Pants:
-                    PantsPic.BackgroundImage = Image.FromFile(e.InventoryItem.item.GetPic());
-                    PantsPic.BackgroundImageLayout = ImageLayout.Stretch;
-                    break;
-                case Item.Type.Shoes:
-                    BootsPic.BackgroundImage = Image.FromFile(e.InventoryItem.item.GetPic());
-                    BootsPic.BackgroundImageLayout = ImageLayout.Stretch;
-                    break;
-                case Item.Type.TwoHanded:
-                    FirstHandPic.BackgroundImage = Image.FromFile(e.InventoryItem.item.GetPic());
-                    FirstHandPic.BackgroundImageLayout = ImageLayout.Stretch;
-                    SecondHandPic.BackgroundImage = null;
-                    break;
-            }
-            
-
         }
         private void InitializeToolTip()
         {
